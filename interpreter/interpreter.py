@@ -3,6 +3,9 @@ from .values import Number
 
 
 class Interpreter:
+    def __init__(self, x: float = 0):
+        self.x = x
+
     # A tricky way to evaluate appropriate class methods for each node type without if/elif statements
     def visit(self, node):
         # e.g AddNode -> 'visit_AddNode'
@@ -12,6 +15,9 @@ class Interpreter:
 
     def visit_NumberNode(self, node):
         return Number(node.value)
+
+    def visit_XNode(self, node):
+        return Number(self.x)
 
     def visit_AddNode(self, node):
         return Number(self.visit(node.node_a).value + self.visit(node.node_b).value)

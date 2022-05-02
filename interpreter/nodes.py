@@ -6,6 +6,11 @@ class NumberNode:
         return f"{self.value}"
 
 
+class XNode:
+    def __repr__(self):
+        return "x"
+
+
 class AddNode:
     def __init__(self, node_a: any, node_b: any):
         self.node_a = node_a

@@ -10,6 +10,7 @@ class TokenType(Enum):
     LEFT_PAREN = 5
     RIGHT_PAREN = 6
     POWER = 7
+    X = 8
 
 
 class Token:
