@@ -9,6 +9,7 @@ class TokenType(Enum):
     DIVIDE = 4
     LEFT_PAREN = 5
     RIGHT_PAREN = 6
+    POWER = 7
 
 
 class Token:

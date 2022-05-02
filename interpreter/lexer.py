@@ -40,6 +40,9 @@ class Lexer:
             elif self.current_char == ")":
                 self.advance()
                 yield Token(TokenType.RIGHT_PAREN)
+            elif self.current_char == "^":
+                self.advance()
+                yield Token(TokenType.POWER)
             else:
                 raise Exception(f"Invalid Syntax '{self.current_char}'")
 
