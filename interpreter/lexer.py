@@ -44,9 +44,12 @@ class Lexer:
                 raise Exception(f"Invalid Syntax '{self.current_char}'")
 
     def generate_number(self):
-        decimal_points_count = 0
+        # Loop over each digit in a number as string
         number_str_builder = self.current_char
         self.advance()
+
+        # Track the number of decimal place (e.g: '3.14.' should raise an error)
+        decimal_points_count = 0
 
         while self.current_char is not None and (self.current_char.isdigit() or self.current_char == "."):
             if self.current_char == ".":
@@ -54,8 +57,8 @@ class Lexer:
                 if decimal_points_count > 1:
                     raise Exception(f"For a number expected 1 or 0 decimal places but given {decimal_points_count}")
 
-                number_str_builder += self.current_char
-                self.advance()
+            number_str_builder += self.current_char
+            self.advance()
 
             if number_str_builder.startswith("."):
                 # .14 -> 0.14
