@@ -13,7 +13,7 @@ if __name__ == '__main__':
             tree = p.parse()
             if not tree:
                 continue
-            interpreter = Interpreter()
+            interpreter = Interpreter(3)
             value = interpreter.visit(tree)
             print(value)
         except Exception as e:
