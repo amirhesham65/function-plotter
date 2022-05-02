@@ -50,6 +50,7 @@ class PowerNode:
     def __repr__(self):
         return f"({self.node_a}^{self.node_b})"
 
+
 class PlusNode:
     def __init__(self, node: any):
         self.node = node
