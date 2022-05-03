@@ -46,7 +46,7 @@ class TestInterpreter(unittest.TestCase):
         """
         Test that the interpreter parser can evaluate an expression with a variable x value
         """
-        self.assertEqual(ArithmeticInterpreter.evaluate("x^2 + 6", x_value=2), 10)
+        self.assertEqual(ArithmeticInterpreter.evaluate("5*x^3 + 2*x", x_value=5), 635)
 
 
 if __name__ == '__main__':

@@ -52,19 +52,25 @@ class Parser:
 
     # Search for the next term e.g: '2*3' is a valid term
     def term(self):
-        result = self.factor()
+        result = self.exp()
 
         while self.current_token is not None and \
-                self.current_token.type in (TokenType.MULTIPLY, TokenType.DIVIDE, TokenType.POWER):
+                self.current_token.type in (TokenType.MULTIPLY, TokenType.DIVIDE):
             if self.current_token.type == TokenType.MULTIPLY:
                 self.advance()
-                result = MultiplyNode(result, self.factor())
+                result = MultiplyNode(result, self.exp())
             elif self.current_token.type == TokenType.DIVIDE:
                 self.advance()
-                result = DivideNode(result, self.factor())
-            elif self.current_token.type == TokenType.POWER:
-                self.advance()
-                result = PowerNode(result, self.factor())
+                result = DivideNode(result, self.exp())
+        return result
+
+    # Exponent expression like x^3 has higher precedence than multiplication and division
+    def exp(self):
+        result = self.factor()
+
+        while self.current_token is not None and self.current_token.type == TokenType.POWER:
+            self.advance()
+            result = PowerNode(result, self.factor())
         return result
 
     # Search for the next factor or unary operator
