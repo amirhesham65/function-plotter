@@ -13,10 +13,10 @@ class Interpreter:
         return method(node)
 
     @staticmethod
-    def visit_NumberNode(self, node):
+    def visit_NumberNode(node):
         return Number(node.value)
 
-    def visit_XNode(self, node):
+    def visit_XNode(self):
         return Number(self.x)
 
     def visit_AddNode(self, node):
