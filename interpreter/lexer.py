@@ -4,7 +4,7 @@ from .tokens import Token, TokenType
 class Lexer:
     def __init__(self, text: str):
         self.text = iter(text)
-        self.current_char: str = None
+        self.current_char = None
         self.advance()
 
     def advance(self):

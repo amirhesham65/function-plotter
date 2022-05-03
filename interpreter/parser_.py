@@ -1,4 +1,4 @@
-from .tokens import Token, TokenType
+from .tokens import TokenType
 from .nodes import *
 
 # The idea of a parser is to parse a given set of tokens into a corresponding tree structure
@@ -12,7 +12,7 @@ from .nodes import *
 class Parser:
     def __init__(self, tokens):
         self.tokens = iter(tokens)
-        self.current_token: Token = None
+        self.current_token = None
         self.advance()
 
     def raise_syntax_error(self):
@@ -94,6 +94,3 @@ class Parser:
             return MinusNode(self.factor())
 
         self.raise_syntax_error()
-
-
-

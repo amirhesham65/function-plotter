@@ -1,4 +1,3 @@
-from .nodes import *
 from .values import Number
 
 
@@ -13,6 +12,7 @@ class Interpreter:
         method = getattr(self, method_name)
         return method(node)
 
+    @staticmethod
     def visit_NumberNode(self, node):
         return Number(node.value)
 
