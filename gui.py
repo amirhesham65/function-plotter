@@ -1,9 +1,7 @@
 import tkinter as tk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
-from interpreter.lexer import Lexer
-from interpreter.parser_ import Parser
-from interpreter.interpreter import Interpreter
+from interpreter.arithmetic_interpreter import ArithmeticInterpreter
 
 
 class GUIApp:
@@ -73,12 +71,8 @@ class GUIApp:
 
     @staticmethod
     def evaluate_function_string(function_string: str, min_val: float, max_val: float) -> (list, list):
-        lexer = Lexer(function_string)
-        tokens = lexer.generate_tokens()
-        p = Parser(tokens)
-        tree = p.parse()
         independent_values = list(range(int(min_val), int(max_val + 1)))
-        dependent_values = [Interpreter(x).visit(tree).value for x in independent_values]
+        dependent_values = [ArithmeticInterpreter.evaluate(function_string, x) for x in independent_values]
         return independent_values, dependent_values
 
     def handle_button_click(self):
