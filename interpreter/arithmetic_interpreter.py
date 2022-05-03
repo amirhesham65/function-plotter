@@ -6,7 +6,7 @@ from interpreter.interpreter import Interpreter
 class ArithmeticInterpreter:
 
     @staticmethod
-    def evaluate(expression: str, x_value: float) -> float:
+    def evaluate(expression: str, x_value: float = 0) -> float:
         lexer = Lexer(expression)
         tokens = lexer.generate_tokens()
         p = Parser(tokens)
