@@ -96,4 +96,6 @@ class GUIApp:
         self.independent_values, self.dependent_values = \
             self.evaluate_function_string(function_string, min_val, max_val)
         self.ax.plot(self.independent_values, self.dependent_values)
+        self.ax.set_xlabel("x")
+        self.ax.set_ylabel("f(x)")
         self.fig.canvas.draw()
