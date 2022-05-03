@@ -81,7 +81,7 @@ class GUIApp:
             function_string = self.function_entry.get()
             if function_string.strip() == "":
                 raise Exception("Please enter a function expression e.g: 'x^2 + 4'")
-            if not self.min_entry.get().isnumeric() or not self.max_entry.get().isnumeric():
+            if not self.min_entry.get().strip("-").isnumeric() or not self.max_entry.get().strip("-").isnumeric():
                 raise Exception("Please enter a valid numeric range for minimum and maximum")
             min_val = float(self.min_entry.get()) if self.min_entry.get() else 0.0
             max_val = float(self.max_entry.get()) if self.max_entry.get() else 0.0
